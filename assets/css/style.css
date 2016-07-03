@@ -1,0 +1,31 @@
+body {}
+
+
+
+.HangMan{height: 600px;
+border: grey solid 1px;
+}
+
+.Letters{height: 300px;
+	border: grey solid 1px;
+	text-align: center;
+}
+
+.Wordbox{height: 300px;
+	border: grey solid 1px;
+}
+
+.boxLetter{color: gold;
+	margin: 0px;
+	text-align: center;
+	font-size: 35px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border: white solid 1px;
+	overflow: auto;}
+
+.negLetter{background-color: red;
+	color: black;}
+
+.posLetter{background-color: green;
+	color: blue;}
