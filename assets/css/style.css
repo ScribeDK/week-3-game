@@ -1,6 +1,8 @@
 body {}
 
-
+.answer{margin-left: 1px;
+margin-right: 1px;
+}
 
 .HangMan{height: 600px;
 border: grey solid 1px;
@@ -13,6 +15,8 @@ border: grey solid 1px;
 
 .Wordbox{height: 300px;
 	border: grey solid 1px;
+	text-align: center;
+	font-size: 32px;
 }
 
 .boxLetter{color: gold;
