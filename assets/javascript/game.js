@@ -1,6 +1,6 @@
 	var List = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 	var winPicture = ["<img width='436' height='550' alt='Bestiary_Griffin' src='assets/images/Bestiary_Griffin.jpg'/>","<img width='736' height='492' alt='Bestiary_Phoenix' src='assets/images/Bestiary_Phoenix.jpg'/>","<img width='436' height='550' alt='Bestiary_Sphinx' src='assets/images/Bestiary_Sphinx.jpg'/>","<img width='399' height='550' alt='Bestiary_Manticore' src='assets/images/Bestiary_Manticore.jpg'/>","<img width='800' height='533' alt='Bestiary_Wyvern' src='assets/images/Bestiary_Wyvern.jpg'/>","<img width='436' height='550' alt='Bestiary_Triton' src='assets/images/Bestiary_Triton.jpg'/>","<img width='436' height='550' alt='Bestiary_Firedrake' src='assets/images/Bestiary_Firedrake.jpg'/>","<img width='436' height='550' alt='Bestiary_Roc' src='assets/images/Bestiary_Roc.jpg'/>"];
-	var wordList = ["GRIFFIN","PHOENIX","SPHINX","MANTICORE","WYVERN","TRITON","DRAKE","ROC"];
+	var wordList = ["GRIFFIN","PHOENIX","SPHINX","MANTICORE","WYVERN","TRITON","FIREDRAKE","ROC"];
 	var hangPictures = ["<img width='978' height='550' alt='HangMan0' src='assets/images/HangMan0.jpg'/>","<img width='978' height='550' alt='HangMan1' src='assets/images/HangMan1.jpg'/>","<img width='978' height='550' alt='HangMan2' src='assets/images/HangMan2.jpg'/>","<img width='978' height='550' alt='HangMan3' src='assets/images/HangMan3.jpg'/>","<img width='978' height='550' alt='HangMan4' src='assets/images/HangMan4.jpg'/>","<img width='978' height='550' alt='HangMan5' src='assets/images/HangMan5.jpg'/>","<img width='978' height='550' alt='HangMan6' src='assets/images/HangMan6.jpg'/>","<img width='978' height='550' alt='HangMan7' src='assets/images/HangMan7.jpg'/>"];
 	var wordLength = [];
 	var outList = [];
@@ -36,7 +36,7 @@
 		
 	letterCount = letterCheck.length;
 	
-	guessCount = Math.ceil(1 + letterCount/2);
+	guessCount = Math.ceil(2 + letterCount/2);
 	startGuess = guessCount;
 	lost = false;
 	
@@ -122,8 +122,13 @@
 		lost = false
 	}
 	else if(guessCount != 0){
-		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[Math.ceil(startGuess/guessCount)]);
+		var indexImage = Math.floor(startGuess/guessCount);
+		if (indexImage < 7){
+		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[indexImage]);}
+		else
+		{document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[6]);}
 	}
+	
 	
 	
 	
