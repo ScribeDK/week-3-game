@@ -99,7 +99,9 @@
 				else{outList[e] = ("<span class='boxLetter posLetter'>" + userInput + "</span>");}
 			}
 		}}
-		else{guessCount = -1;}
+		else{guessCount = -1;
+		document.querySelector('.HangMan').innerHTML = ("<p>The answer was</p>" + winPicture[indexNumber] + "<br> Press anykey to play again");
+		}
 	
 	if(guessCount < 0){
 		newGame = confirm('Play again?');
@@ -117,7 +119,10 @@
 	else if(lost == true && guessCount == 0){
 		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[7]);
 		alert('You lost press anykey to play another game.');
-		lost = false	
+		lost = false
+	}
+	else if(guessCount != 0){
+		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[Math.ceil(startGuess/guessCount)]);
 	}
 	
 	
@@ -139,11 +144,13 @@
 		document.querySelector('.HangMan').innerHTML = ("<br>" + winPicture[indexNumber]);
 		alert('You win press anykey to play another game.');
 		winWord = [];
+		lost = false;
 		}
 	
 	if (newGame == true)
 	{wordLength = [];
 	winWord = [];
+	letterCheck = [];
 	startGame();
 	}
 	
