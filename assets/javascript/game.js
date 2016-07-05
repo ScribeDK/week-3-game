@@ -122,7 +122,7 @@
 		lost = false
 	}
 	else if(guessCount != 0){
-		var indexImage = Math.floor(startGuess/guessCount);
+		var indexImage = Math.ceil((100 - ((100/startGuess)*guessCount))/15);
 		if (indexImage < 7){
 		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[indexImage]);}
 		else
