@@ -16,6 +16,7 @@
 	var startGuess = 0;
 	var lost = false;
 	var userInput = ("");
+	var wins = 0;
 	
 	function startGame(){
 	
@@ -45,7 +46,7 @@
 	
 	for(e in List){
 	outList[e] = ("<span class='boxLetter'>" + List[e] + "</span>");}
-	document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[0]);
+	document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[0] + "<br> Press anykey to start");
 	
 	newGame = false;
 	}}
@@ -105,29 +106,28 @@
 		guessCount = 0;
 	}
 
-	
 	if(startGuess - guessCount == 0){
-		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[0]);
+		document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[0] + "<br> Press anykey to start");
 	}
 	else if(guessCount == 1){
-		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[6]);
+		document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[6]);
 		lost = true;
 	}
 	else if(lost == true && guessCount == 0){
 		audioKey = 1;
-		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[7] + audio[audioKey] );
+		document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[7] + audio[audioKey] );
 		alert('You lost press anykey to play another game.');
 		lost = false
 	}
 	else if(guessCount != 0){
 		var indexImage = Math.floor((100 - ((100/startGuess)*guessCount))/15);
 		if (indexImage < 7){
-		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[indexImage]);}
+		document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[indexImage]);}
 		else if(indexImage == 0){
-		{document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[1]);}	
+		{document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[1]);}	
 		}
 		else
-		{document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[6]);}
+		{document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + hangPictures[6]);}
 	}
 
 	var win = false;
@@ -142,7 +142,8 @@
 	if (win == true)
 		{guessCount = 0;
 		audioKey = 0;
-		document.querySelector('.HangMan').innerHTML = ("<br>" + winPicture[indexNumber] + audio[audioKey]);
+		wins = wins + 1;
+		document.querySelector('.HangMan').innerHTML = ("<p>Wins: "+ wins + "</p>" + winPicture[indexNumber] + audio[audioKey]);
 		alert('You win press anykey to play another game.');
 		winWord = [];
 		lost = false;
