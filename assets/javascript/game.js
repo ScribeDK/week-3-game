@@ -13,6 +13,7 @@
 	var indexNumber = 0;
 	var startGuess = 0;
 	var lost = false;
+	var userInput = ("");
 	
 	function startGame(){
 	
@@ -70,18 +71,12 @@
 			x = x + 1;
 			write = write + "<br>";
 		}}
-	
+		
 	document.querySelector('.Letters').innerHTML = ("<br>" + write);
 	}
 	
-	
-	startGame();
-	output();
-	outputAns();
-	
-	document.onkeyup = function (event) {
+	function run(userInput){		
 		if(guessCount > 0){
-		var userInput = String.fromCharCode(event.keyCode).toUpperCase();
 		var wordCheck = false;
 		for(x in wordChosen){
 		if(userInput == wordChosen[x]){
@@ -117,7 +112,7 @@
 		lost = true;
 	}
 	else if(lost == true && guessCount == 0){
-		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[7]);
+		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[7] + "<audio autoplay><source src='assets/audio/RainyMood.mp3' type='audio/mpeg'></audio>" );
 		alert('You lost press anykey to play another game.');
 		lost = false
 	}
@@ -128,10 +123,7 @@
 		else
 		{document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[6]);}
 	}
-	
-	
-	
-	
+
 	var win = false;
 	var winString = (wordList[indexNumber]);
 	for(e in winString){
@@ -140,9 +132,6 @@
 		else{win = false;
 			break;}
 	}
-	
-
-	console.log(win);
 	
 	if (win == true)
 		{guessCount = 0;
@@ -161,4 +150,14 @@
 	
 	output();
 	outputAns();
+	}	
+	
+	
+	startGame();
+	output();
+	outputAns();
+	
+	document.onkeyup = function (event) {
+		var userInput = String.fromCharCode(event.keyCode).toUpperCase();
+		run(userInput);
 	}
