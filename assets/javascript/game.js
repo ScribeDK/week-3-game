@@ -120,9 +120,12 @@
 		lost = false
 	}
 	else if(guessCount != 0){
-		var indexImage = Math.ceil((100 - ((100/startGuess)*guessCount))/15);
+		var indexImage = Math.floor((100 - ((100/startGuess)*guessCount))/15);
 		if (indexImage < 7){
 		document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[indexImage]);}
+		else if(indexImage == 0){
+		{document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[1]);}	
+		}
 		else
 		{document.querySelector('.HangMan').innerHTML = ("<br>" + hangPictures[6]);}
 	}
